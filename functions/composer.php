@@ -33,7 +33,7 @@
 		input.setAttribute("name", "package[]");
 		input.setAttribute("placeholder", "vendor/package");
 		input.style.display = "block";
-		input.style.marginLeft = "58px";
+		input.style.marginLeft = "60px";
 		div_plus.appendChild(input);
 	});
 
@@ -47,6 +47,8 @@
 </script>
 
 <?php 
+
+$url = $_SERVER['HTTP_REFERER'];
 
 if (isset($_POST['btn_json'])) {
 	foreach ($_POST as $key => $value) {
@@ -95,8 +97,7 @@ if (isset($_POST['btn_json'])) {
 
 	shell_exec("cd ../your-projects/".$project_name." && composer install"); // Installation du composer.json
 
-	header('Location: http://localhost/my-site/Lazy-v1.1.0'); // URL PAR HTTPSERVER
-
+	header('Location: '.$url);
 }
 
 if(isset($_POST['require'])) {
@@ -127,7 +128,7 @@ RewriteRule . index.php [L]";
 	}
 			
 
-header('Location: http://localhost/my-site/Lazy-v1.1.0/'); // URL PAR HTTPSERVER
+header('Location: '.$url);
 
 	
 }

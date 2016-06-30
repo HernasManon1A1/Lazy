@@ -8,7 +8,7 @@
 		}
 	}
 
-	$('a').click(function(e){
+	$('.composer').click(function(e){
 	e.preventDefault();
 	$.ajax({
 		url: $(this).attr('href'),
