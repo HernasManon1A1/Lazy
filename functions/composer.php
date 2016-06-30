@@ -1,26 +1,26 @@
-<em>Attention vous devez avoir Composer d'installer sur votre machine. <a href="https://getcomposer.org/Composer-Setup.exe">télécharger composer</a></em>
-	<h3>1. Création composer.json</h3>
+<em>You need to install Composer to use this. <a href="https://getcomposer.org/Composer-Setup.exe">download composer</a></em>
+	<h3>1. Generate composer.json</h3>
 	<form action="functions/composer.php" method="POST" id='form-json'>
-		<label for='id_name'>Nom du projet</label>
+		<label for='id_name'>Project name</label>
 		<input type="text" id="id_name" name="project_name" />
 		<input type="text" name='name' id="name" placeholder="vendor/name (required)" required/>
-		<input type="text" name='description' placeholder="description" />
+		<input type="text" name='description' placeholder="Description" />
 		<input type="text" name='fullname' placeholder="Full name" />
-		<input type="text" name='email' placeholder="email" />
-		<input type="submit" value="Créer" name='btn_json'>
+		<input type="text" name='email' placeholder="Email" />
+		<input type="submit" value="Generate" name='btn_json'>
 	</form>
 
-<h3>2. Installation de Packages</h3>
+<h3>2. Package Installation</h3>
 	<form action="functions/composer.php" method="POST" id='form-package'>
-		<label for="pname">Sur quel projet?</label>
+		<label for="pname">Which projet?</label>
 		<input type="text" name='pname' id='pname' required/><br/>
 		<label><input type="checkbox" name="package[]" id="cbox3" value="symfony"> Symfony</label><br>
 		<label><input type="checkbox" name="package[]" id="cbox1" value="altorouter/altorouter"> Altorouter</label><br>
 		<label><input type="checkbox" name="package[]" id="cbox2" value="fzaninotto/faker"> Faker</label><br>
-		<label for="autre">Autre...</label>
+		<label for="autre">Other...</label>
 		<input type="text" name="package[]" placeholder="vendor/package" id="autre"><span id='plus'>+</span>
 		<div class="plus"></div>
-		<input type="submit" value="Installer" name='require'>
+		<input type="submit" value="Install" name='require'>
 
 	</form>
 <script>
