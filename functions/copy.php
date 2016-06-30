@@ -2,15 +2,15 @@
 
 /**
 *
-* Copie recursive
+* RECURSIVE COPY
 *
-* 	@param string $src Lien dossier source
-*	@param string $dst Lien dossier destinataire
+* 	@param string $src source dir
+*	@param string $dst destination dir
 *
 */
 
 function copydir($src, $dst) {
-
+    // IF DST DIR DOESN'T EXIST: CREATE IT
     if(!is_dir($dst)) {
     	mkdir($dst);
     }
@@ -18,9 +18,9 @@ function copydir($src, $dst) {
    	$dir = opendir($src);
     while (false !== ($file = readdir($dir))) {
         if ($file != '.' && $file != '..') {
-       		if (is_dir($src . "/" . $file)) { // SI FILE EST UN DOSSIER -> ON RELANCE LA FONCTION
+       		if (is_dir($src . "/" . $file)) { // IF FILE IS A DIR -> REDO THAT FUNCTION
         	    copydir($src."/".$file, $dst."/".$file);
-        	} else { // SINON ON COPIE LE FICHIER VERS DST
+        	} else { // ELSE COPY FILES TO DST
         	    copy($src.'/'.$file,$dst.'/'.$file);
         	}
        	}        	
