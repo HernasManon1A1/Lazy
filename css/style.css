@@ -1,0 +1,48 @@
+body {
+	margin: 0;
+	background-color: #4E4C51;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+	background-color: #F1F1F1;
+	width: 1000px;
+	margin: auto;
+	padding: 50px;
+	height: 100%;
+	position: relative;
+}
+.planning {
+	position: absolute;
+	top: 30px;
+	right: 50px;
+}
+
+.input_text label {
+	display: block;
+}
+
+.checkbox {
+	
+}
+
+.hidden {
+	display: none;
+}
+
+.btn_submit {
+	
+}
+
+.succes {
+	color: #63BF60;
+}
+
+.clear {
+	clear: both;
+}
