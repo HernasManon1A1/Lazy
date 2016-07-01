@@ -66,11 +66,13 @@ if (isset($_POST['btn_json'])) {
 	if(isset($project_name) && !empty($project_name)) {
 		if(!is_dir("../your-projects/".$project_name)) {
 			mkdir("../your-projects/".$project_name);
-			if(is_file("../your-projects/".$project_name."/index.php")) {
-				// include
-			} else {
+			if(!is_file("../your-projects/".$project_name."/index.php")) {
+
 				$index = fopen("../your-projects/".$project_name."/index.php", "w");
-				//doctype
+				// Doctype
+				$doctype = "<?php require_once 'vendor/autoload.php'; ?>\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>".$project_name."</title>\n	<!-- CUSTOM CSS -->\n	<link rel=\"stylesheet\" href=\"css/style.css\">\n</head>\n<body>\n\n\n\n\n	<script src=\"js/script.js\"></script>\n</body>\n</html>";
+
+				fwrite($index, $doctype);
 			}
 			
 		}

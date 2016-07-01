@@ -1,6 +1,6 @@
 - REWORK no-composer.php : POST in ajax?
 - reorganize project (too much folders)
+- add fclose()
 
 TO ADD:
-- doctype with composer
 - create a form + sql + pdo
