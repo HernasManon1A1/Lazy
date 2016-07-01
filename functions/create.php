@@ -1,5 +1,5 @@
 <?php 
-	include_once('values.php'); // ON RECUPERE LES ARRAYS
+	include_once('no-composer/values.php'); // ON RECUPERE LES ARRAYS
 /**
 *
 *	Récupérer tableau $input_form

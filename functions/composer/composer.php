@@ -2,7 +2,7 @@
 
 	<h3>1. Generate composer.json</h3>
 
-	<form action="functions/composer.php" method="POST" id='form-json'>
+	<form action="functions/composer/composer.php" method="POST" id='form-json'>
 		<label for='id_name'>Project name</label>
 		<input type="text" id="id_name" name="project_name" />
 		<input type="text" name='name' id="name" placeholder="vendor/name (required)" required/>
@@ -64,11 +64,11 @@ if (isset($_POST['btn_json'])) {
 
 	// CREATE THE PROJECT_NAME DIRECTORY AND INDEX + DOCTYPE
 	if(isset($project_name) && !empty($project_name)) {
-		if(!is_dir("../your-projects/".$project_name)) {
-			mkdir("../your-projects/".$project_name);
-			if(!is_file("../your-projects/".$project_name."/index.php")) {
+		if(!is_dir("../../your-projects/".$project_name)) {
+			mkdir("../../your-projects/".$project_name);
+			if(!is_file("../../your-projects/".$project_name."/index.php")) {
 
-				$index = fopen("../your-projects/".$project_name."/index.php", "w");
+				$index = fopen("../../your-projects/".$project_name."/index.php", "w");
 				// Doctype
 				$doctype = "<?php require_once 'vendor/autoload.php'; ?>\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>".$project_name."</title>\n	<!-- CUSTOM CSS -->\n	<link rel=\"stylesheet\" href=\"css/style.css\">\n</head>\n<body>\n\n\n\n\n	<script src=\"js/script.js\"></script>\n</body>\n</html>";
 
@@ -79,7 +79,7 @@ if (isset($_POST['btn_json'])) {
 		}
 	}
 
-	$composer = fopen("../your-projects/".$project_name."/composer.json", "w");
+	$composer = fopen("../../your-projects/".$project_name."/composer.json", "w");
 
 	// Vendor/name
 	$json = "{
@@ -110,7 +110,7 @@ if (isset($_POST['btn_json'])) {
 	fclose($composer);
 
 	// INSTALL COMPOSER.JSON
-	shell_exec("cd ../your-projects/".$project_name." && composer install"); 
+	shell_exec("cd ../../your-projects/".$project_name." && composer install"); 
 
 	// GO BACK TO INDEX.PHP
 	header('Location: '.$url);
@@ -129,12 +129,12 @@ if(isset($_POST['require'])) {
 		// FOREACH vendor/package -> INSTALL
 		foreach ($package as $key => $value) {
 			if(!empty($value)) {
-				shell_exec("cd ../your-projects/".$pname." && composer require ".$value."");
+				shell_exec("cd ../../your-projects/".$pname." && composer require ".$value."");
 			}
 
 			// CREATE .HTTACCESS FOR ALTOROUTER
 			if($value == "altorouter/altorouter") {
-				$htaccess = fopen("../your-projects/".$pname."/.htaccess", "w");
+				$htaccess = fopen("../../your-projects/".$pname."/.htaccess", "w");
 				$insert = "RewriteEngine ON
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . index.php [L]";
