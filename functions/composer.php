@@ -73,6 +73,7 @@ if (isset($_POST['btn_json'])) {
 				$doctype = "<?php require_once 'vendor/autoload.php'; ?>\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>".$project_name."</title>\n	<!-- CUSTOM CSS -->\n	<link rel=\"stylesheet\" href=\"css/style.css\">\n</head>\n<body>\n\n\n\n\n	<script src=\"js/script.js\"></script>\n</body>\n</html>";
 
 				fwrite($index, $doctype);
+				fclose($index);
 			}
 			
 		}
