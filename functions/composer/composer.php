@@ -14,7 +14,7 @@
 
 <h3>2. Package Installation</h3>
 
-	<form action="functions/composer.php" method="POST" id='form-package'>
+	<form action="functions/composer/composer.php" method="POST" id='form-package'>
 		<label for="pname">Which projet?</label>
 		<input type="text" name='pname' id='pname' required/><br/>
 		<label><input type="checkbox" name="package[]" id="cbox3" value="symfony"> Symfony</label><br>
