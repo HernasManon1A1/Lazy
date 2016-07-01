@@ -16,8 +16,8 @@
 			<!-- NEW PROJECT SECTION -->
 			<h2>Create a new project</h2>
 			<hr>
-			<a href='functions/no-composer.php' class="composer">Without composer</a>
-			<a href='functions/composer.php' class="composer">With composer</a>
+			<a href='functions/no-composer/no-composer.php' class="composer">Without composer</a>
+			<a href='functions/composer/composer.php' class="composer">With composer</a>
 			<div class="content"></div>
 
 

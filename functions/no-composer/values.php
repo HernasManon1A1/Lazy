@@ -9,12 +9,6 @@
 			'type' => 'checkbox',
 			'link' => array( 'css' => 'css/font-awesome.min.css')
 			),
-		/*array(
-			'label' => 'MVC',
-			'id' => 'mvc',
-			'name' => 'modele',
-			'type' => 'checkbox'
-			),		*/
 		array(
 			'label' => 'Formulaire',
 			'id' => 'form',
