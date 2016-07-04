@@ -27,16 +27,8 @@ body {
 	display: block;
 }
 
-.checkbox {
-	
-}
-
-.hidden {
+.include_check {
 	display: none;
-}
-
-.btn_submit {
-	
 }
 
 .succes {
