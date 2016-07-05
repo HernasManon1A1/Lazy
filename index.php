@@ -31,7 +31,7 @@
 					<input type="text" name='fullname' placeholder="Full name" />
 					<input type="text" name='email' placeholder="Email" />
 					
-				<h3>3. Do you need some content?</h3>
+				<h4>Do you need some content?</h4>
 				<input type="radio" value='yis' name='content' id='yis' /><label for="yis">Yis, plis</label>
 				<input type="radio" value='nope' name='content' id='nope' checked /><label for="nope">Nope, thanks</label><br/>
 				<div class="include_check">
@@ -40,10 +40,9 @@
 				</div>
 				<input type="submit" value="Generate" name='btn_json'>
 			</form>
-
-				</form>
-
-			<h3>4. Package Installation</h3>
+			<br/>
+			<h2>Package Installation</h2>
+			<hr>
 
 				<form action="functions/composer/composer.php" method="POST" id='form-package'>
 					<label for="pname">Which projet?</label>
