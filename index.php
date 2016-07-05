@@ -1,4 +1,10 @@
-<?php require_once('load_functions.php'); ?>
+<?php require_once('load_functions.php');
+
+if (!is_file("composer")) {
+	exec("composer.bat");
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +24,7 @@
 			<hr>
 				<h3>1. Update Composer</h3>
 				<form action="functions/composer/composer.php" method="POST">
-					<input type="submit" name="update" value="Just click here..." />
+					<input type="submit" name="update" value="Click here" />
 				</form>
 
 				<h3>2. Generate composer.json</h3>
