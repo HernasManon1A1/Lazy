@@ -1,9 +1,23 @@
 <?php require_once('load_functions.php');
 
-if (!is_file("composer")) {
-	exec("composer.bat");
-}
+	// LAZY/INDEX.PHP
+    $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	$url = preg_replace('/\?.*/', '', $url);
 
+	// CHECK IF USER IS CONNECTED
+    $connected = @fsockopen("www.google.com", 80); 
+    if ($connected){ // IF CONNECTED -> INDEX.PHP (use composer)
+        fclose($connected);
+
+    }else{ // ELSE USE LOCAL LAZY
+        header("Location: ".$url."functions/local/");
+    }
+
+    // INSTALL COMPOSER IF IT'S NOT ALREADY INSTALLED
+	if (!is_file("composer")) {
+		exec("composer.bat");
+
+	}
 ?>
 
 <!DOCTYPE html>
