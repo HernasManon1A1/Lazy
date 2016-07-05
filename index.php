@@ -10,7 +10,7 @@
         fclose($connected);
 
     }else{ // ELSE USE LOCAL LAZY
-        header("Location: ".$url."functions/local/");
+        header("Location: ".$url."local.php");
     }
 
     // INSTALL COMPOSER IF IT'S NOT ALREADY INSTALLED
@@ -72,7 +72,7 @@
 					<label><input type="checkbox" name="package[]" id="cbox2" value="fzaninotto/faker"> Faker</label><br>
 					<label for="autre">Other...</label>
 					<input type="text" name="package[]" placeholder="vendor/package" id="autre"><span id='plus'>+</span>
-					<div class="plus"></div>
+					<div class="plus" onclick='function onClickInput();'></div>
 					<p style="font-size: 14px"><em>Visit <a href="https://packagist.org/">Packagist</a> to find more packages</em></p>
 					<input type="submit" value="Install" name='require'>
 				</form>
