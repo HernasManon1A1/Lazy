@@ -14,11 +14,11 @@
 	<div class="wrapper">
 		<div class="container">
 			<!-- NEW PROJECT SECTION -->
-			<p>You seem to be in a tunnel, there's no network but you can still create a tiny lazy project even so it's not recommended</p>
+			<p>You seem to be in a tunnel, there's no network but you can still create a tiny lazy project even if it's not recommended</p>
 
 			<h2>Create a new project</h2>
 			<hr>
-			<form action="functions/composer/composer.php" method="POST" id='form-json'>
+			<form action="functions/local/local.php" method="POST" id='form-local'>
 				<label for='id_name'>Project name</label>
 				<input type="text" id="id_name" name="project_name" />
 
@@ -37,7 +37,7 @@
 					<input type="checkbox" value='form' name='include[]' id='form' /><label for="form">Form</label><br/>
 					<input type="checkbox" value='form2' name='include[]' id='form2' /><label for="form2">Form2</label><br/>
 				</div>
-				<input type="submit" value="Generate" name='btn_json'>
+				<input type="submit" value="Create" name='btn_create'>
 			</form>
 
 			<!-- PROJECT LIST SECTION -->
