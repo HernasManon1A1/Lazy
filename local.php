@@ -40,6 +40,8 @@
 				<input type="submit" value="Create" name='btn_create'>
 			</form>
 
+			<p><em>When you have a network connexion you should generate a composer.json</em></p>
+
 			<!-- PROJECT LIST SECTION -->
 			<h2>Your projects</h2>
 			<hr>			

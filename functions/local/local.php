@@ -1,6 +1,4 @@
 <?php 
-include_once "../../load_functions.php";
-
 if (isset($_POST['btn_create'])) {
 	foreach ($_POST as $key => $value) {
 		$$key = $value;
@@ -33,18 +31,25 @@ if (isset($_POST['btn_create'])) {
 		}
 
 		if (isset($_POST['link']) && isset($_POST['link']) == "yes") {
+			require_once '../recursiveCopy.php';
+
 			// Insert doctype until CSS
 			$index = fopen("../../your-projects/".$project_name."/index.php", "a");
 			$doctype = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>".$project_name."</title>\n";
 			fwrite($index, $doctype);
 			// Foreach insert link CSS
 			foreach ($_POST['framework'] as $value) {
-				// VERIFIER QUE LE CSS EXISTE
+				$src = "../../vendor/".$value;
+				$dst = "../../your-projects/".$project_name."/vendor/".$value;
+				copydir($src, $dst);
 
 
-				$name = strtoupper($value);
-				$css = "	<!-- ".$name." CSS -->\n	<link rel=\"stylesheet\" href=\"css/".$value.".css\">\n";
-				fwrite($index, $css);
+				// IF THIS FRAMEWORK'S CSS EXIST, LINK IT
+				if (is_dir("../../vendor/".$value."/css")) {
+					$name = strtoupper($value);
+					$css = "	<!-- ".$name." CSS -->\n	<link rel=\"stylesheet\" href=\"css/".$value.".min.css\">\n";
+					fwrite($index, $css);
+				}
 			}
 
 			$index = fopen("../../your-projects/".$project_name."/index.php", "a");
@@ -77,11 +82,12 @@ if (isset($_POST['btn_create'])) {
 		// JS
 		if (isset($_POST['link']) && isset($_POST['link']) == "yes") {
 			foreach ($_POST['framework'] as $value) {
-				// VERIFIER QUE LE JS EXISTE
-
-				$name = strtoupper($value);
-				$js = "	<!-- ".$name." JS -->\n	<script src=\"js/".$value.".js\"></script>\n";
-				fwrite($index, $js);
+				// IF THIS FRAMEWORK'S JS EXIST, LINK IT
+				if (is_dir("../../vendor/".$value."/js")) {
+					$name = strtoupper($value);
+					$js = "	<!-- ".$name." JS -->\n	<script src=\"js/".$value.".min.js\"></script>\n";
+					fwrite($index, $js);
+				}
 			}
 		}
 
@@ -93,7 +99,6 @@ if (isset($_POST['btn_create'])) {
 	}
 	// LAZY/LOCAL.PHP
 	$url = $_SERVER['HTTP_REFERER'];
-	var_dump($url);
 	header('Location: '.$url);
 }
  ?>
