@@ -27,7 +27,7 @@ body {
 	display: block;
 }
 
-.include_check {
+.include_check, .framework_check {
 	display: none;
 }
 

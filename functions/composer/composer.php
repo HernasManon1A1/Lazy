@@ -20,12 +20,17 @@ if (isset($_POST['btn_json'])) {
 	if(isset($project_name) && !empty($project_name)) {
 		if(!is_dir("../../your-projects/".$project_name)) {
 			mkdir("../../your-projects/".$project_name);
-			if(!is_file("../../your-projects/".$project_name."/index.php")) {
+			mkdir("../../your-projects/".$project_name."/css");
+			mkdir("../../your-projects/".$project_name."/js");
 
-				$index = fopen("../../your-projects/".$project_name."/index.php", "w");
-				fclose($index);
-			}
-			
+			$index = fopen("../../your-projects/".$project_name."/index.php", "w");
+			fclose($index);
+
+			$css = fopen("../../your-projects/".$project_name."/css/style.css", "w");
+			fclose($css);
+
+			$js = fopen("../../your-projects/".$project_name."/js/script.js", "w");
+			fclose($js);
 		}
 	}
 

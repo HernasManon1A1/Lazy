@@ -10,6 +10,7 @@
         fclose($connected);
 
     }else{ // ELSE USE LOCAL LAZY
+    	fclose($connected);
         header("Location: ".$url."local.php");
     }
 
