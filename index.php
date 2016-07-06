@@ -4,17 +4,7 @@
     $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	$url = preg_replace('/\?.*/', '', $url);
 
-	// CHECK IF USER IS CONNECTED
-    $connected = @fsockopen("www.google.com", 80); 
-    if ($connected){ // IF CONNECTED -> INDEX.PHP (use composer)
-        fclose($connected);
-
-    }else{ // ELSE USE LOCAL LAZY
-    	fclose($connected);
-        header("Location: ".$url."local.php");
-    }
-
-    // INSTALL COMPOSER IF IT'S NOT ALREADY INSTALLED
+	// INSTALL COMPOSER IF IT'S NOT ALREADY INSTALLED
 	if (!is_file("composer")) {
 		exec("composer.bat");
 
@@ -34,61 +24,19 @@
 <body>
 	<div class="wrapper">
 		<div class="container">
-			<!-- NEW PROJECT SECTION -->
-			<h2>Create a new project</h2>
-			<hr>
-				<h3>1. Update Composer</h3>
-				<form action="functions/composer/composer.php" method="POST">
-					<input type="submit" name="update" value="Click here" />
-				</form>
 
-				<h3>2. Generate composer.json</h3>
+<?php 
+	// CHECK IF USER IS CONNECTED
+    $connected = @fsockopen("www.google.com", 80); 
+    if ($connected){ // IF CONNECTED -> USE COMPOSER
+        fclose($connected);
+        include_once "./functions/composer/index.php";
 
-				<form action="functions/composer/composer.php" method="POST" id='form-json'>
-					<label for='id_name'>Project name</label>
-					<input type="text" id="id_name" name="project_name" />
-					<input type="text" name='name' id="name" placeholder="vendor/name (required)" required/>
-					<input type="text" name='description' placeholder="Description" />
-					<input type="text" name='fullname' placeholder="Full name" />
-					<input type="text" name='email' placeholder="Email" />
-					
-				<h4>Do you need some content?</h4>
-				<input type="radio" value='yis' name='content' id='yis' /><label for="yis">Yis, plis</label>
-				<input type="radio" value='nope' name='content' id='nope' checked /><label for="nope">Nope, thanks</label><br/>
-				<div class="include_check">
-					<input type="checkbox" value='form' name='include[]' id='form' /><label for="form">Form</label><br/>
-					<input type="checkbox" value='form2' name='include[]' id='form2' /><label for="form2">Form2</label><br/>
-				</div>
-				<input type="submit" value="Generate" name='btn_json'>
-			</form>
-			<br/>
-			<h2>Package Installation</h2>
-			<hr>
+    }else{ // ELSE USE LOCAL LAZY
+    	fclose($connected);
+        include_once './functions/local/index.php';
+    }
+?>
 
-				<form action="functions/composer/composer.php" method="POST" id='form-package'>
-					<label for="pname">Which projet?</label>
-					<input type="text" name='pname' id='pname' required/><br/>
-					<label><input type="checkbox" name="package[]" id="cbox3" value="symfony"> Symfony</label><br>
-					<label><input type="checkbox" name="package[]" id="cbox1" value="altorouter/altorouter"> Altorouter</label><br>
-					<label><input type="checkbox" name="package[]" id="cbox2" value="fzaninotto/faker"> Faker</label><br>
-					<label for="autre">Other...</label>
-					<input type="text" name="package[]" placeholder="vendor/package" id="autre"><span id='plus'>+</span>
-					<div class="plus" onclick='function onClickInput();'></div>
-					<p style="font-size: 14px"><em>Visit <a href="https://packagist.org/">Packagist</a> to find more packages</em></p>
-					<input type="submit" value="Install" name='require'>
-				</form>
-
-
-
-
-			<!-- PROJECT LIST SECTION -->
-			<h2>Your projects</h2>
-			<hr>			
-			<?php getListDir(array(array())); ?>
-		</div>
-	</div>
-	<div class="clear"></div>
-	<!-- CUSTOM JS -->
-	<script src="js/script.js"></script>
 </body>
 </html>

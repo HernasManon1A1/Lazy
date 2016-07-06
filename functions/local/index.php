@@ -1,18 +1,3 @@
-<?php require_once('load_functions.php'); ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Lazy Generator</title>
-	<!-- GOOGLE FONTS CSS -->
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	<!-- CUSTOM STYLE CSS -->
-	<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-	<div class="wrapper">
-		<div class="container">
 			<!-- NEW PROJECT SECTION -->
 			<p>You seem to be in a tunnel, there's no network but you can still create a tiny lazy project even if it's not recommended</p>
 
@@ -51,5 +36,3 @@
 	<div class="clear"></div>
 	<!-- CUSTOM JS -->
 	<script src="js/script_local.js"></script>
-</body>
-</html>
