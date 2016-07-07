@@ -16,7 +16,7 @@ function getListDir($array) {
     	if ($dh = opendir($dir)) { // OPEN YOUR_PROJECT DIR
 	        while (($file = readdir($dh)) !== false) { // READ ALL THE FILES IN IT
 	        	if ($file != "." && $file != "..") { // EXCEPT . AND .. DIR
-	        		echo "<li><a href='".$dir.$file."' target='_blank'>".$file."</a></li>"; // LIST THEM IN A LIST
+	        		echo "<li><a href='".$dir.urlencode($file)."' target='_blank'>".urldecode($file)."</a></li>"; // LIST THEM IN A LIST
 	        	} 
         	}
         closedir($dh);

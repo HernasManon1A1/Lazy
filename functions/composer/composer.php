@@ -17,6 +17,7 @@ if (isset($_POST['btn_json'])) {
 	// CREATE THE PROJECT_NAME DIRECTORY AND INDEX + DOCTYPE
 	if(isset($project_name) && !empty($project_name)) {
 		if(!is_dir("../../your-projects/".$project_name)) {
+			$project_name = htmlspecialchars(trim(urlencode($project_name)));
 			mkdir("../../your-projects/".$project_name);
 			mkdir("../../your-projects/".$project_name."/css");
 			mkdir("../../your-projects/".$project_name."/js");
@@ -78,7 +79,7 @@ if (isset($_POST['btn_json'])) {
 		// ADD SIMPLE DOCTYPE
 		$index = fopen("../../your-projects/".$project_name."/index.php", "w");
 		// Doctype
-		$doctype = "<?php require_once 'vendor/autoload.php'; ?>\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>".$project_name."</title>\n	<!-- CUSTOM CSS -->\n	<link rel=\"stylesheet\" href=\"css/style.css\">\n</head>\n<body>\n\n\n\n\n	<!-- CUSTOM JS -->\n	<script src=\"js/script.js\"></script>\n</body>\n</html>";
+		$doctype = "<?php require_once 'vendor/autoload.php'; ?>\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>".urldecode($project_name)."</title>\n	<!-- CUSTOM CSS -->\n	<link rel=\"stylesheet\" href=\"css/style.css\">\n</head>\n<body>\n\n\n\n\n	<!-- CUSTOM JS -->\n	<script src=\"js/script.js\"></script>\n</body>\n</html>";
 
 		fwrite($index, $doctype);
 		fclose($index);
@@ -88,7 +89,7 @@ if (isset($_POST['btn_json'])) {
 	if (isset($_POST['include'])) {
 		$index = fopen("../../your-projects/".$project_name."/index.php", "w");
 		// Doctype
-		$doctype = "<?php require_once 'vendor/autoload.php'; ?>\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>".$project_name."</title>\n	<!-- CUSTOM CSS -->\n	<link rel=\"stylesheet\" href=\"css/style.css\">\n</head>\n<body>\n\n";
+		$doctype = "<?php require_once 'vendor/autoload.php'; ?>\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>".urldecode($project_name)."</title>\n	<!-- CUSTOM CSS -->\n	<link rel=\"stylesheet\" href=\"css/style.css\">\n</head>\n<body>\n\n";
 		fwrite($index, $doctype);
 
 		foreach ($_POST['include'] as $include) {

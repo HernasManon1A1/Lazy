@@ -9,6 +9,7 @@ if (isset($_POST['btn_create'])) {
 	// WE CREATE PROJECT FOLDER IF PROJECT NAME NOT EMPTY AND DOESNT ALREADY EXIST
 	if (isset($project_name) && !empty($project_name)) {
 		if(!is_dir("../../your-projects/".$project_name)) {
+			$project_name = htmlspecialchars(trim(urlencode($project_name)));
 			mkdir("../../your-projects/".$project_name);
 			mkdir("../../your-projects/".$project_name."/css");
 			mkdir("../../your-projects/".$project_name."/js");
@@ -28,7 +29,7 @@ if (isset($_POST['btn_create'])) {
 
 		// Insert doctype
 		$index = fopen("../../your-projects/".$project_name."/index.php", "w");
-		$doctype = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>".$project_name."</title>\n	<!-- CUSTOM CSS -->\n	<link rel=\"stylesheet\" href=\"css/style.css\">\n";
+		$doctype = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>".urldecode($project_name)."</title>\n	<!-- CUSTOM CSS -->\n	<link rel=\"stylesheet\" href=\"css/style.css\">\n";
 
 		fwrite($index, $doctype);
 		fclose($index);
