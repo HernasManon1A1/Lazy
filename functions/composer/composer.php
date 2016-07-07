@@ -21,11 +21,19 @@ if (isset($_POST['btn_json'])) {
 			mkdir("../../your-projects/".$project_name."/css");
 			mkdir("../../your-projects/".$project_name."/js");
 
-			$index = fopen("../../your-projects/".$project_name."/index.php", "w");
-			fclose($index);
-
-			$css = fopen("../../your-projects/".$project_name."/css/style.css", "w");
-			fclose($css);
+			if(file_exists("../../your-projects/".$project_name."/index.php")) {
+				$index = fopen("../../your-projects/".$project_name."/index.php", "w");
+				$doctype = "<?php require_once 'vendor/autoload.php'; ?>\n";
+				fclose($index);
+			}else {
+				$index = fopen("../../your-projects/".$project_name."/index.php", "w");
+				fclose($index);
+			}
+			
+			// COPY A BASIC CSS THEME
+			$src = "../../css/style.css";
+			$dst = "../../your-projects/".$project_name."/css/style.css";
+			copy($src, $dst);
 
 			$js = fopen("../../your-projects/".$project_name."/js/script.js", "w");
 			fclose($js);
