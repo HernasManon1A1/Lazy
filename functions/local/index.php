@@ -3,7 +3,7 @@
 
 			<h2>Create a new project</h2>
 			<hr>
-			<form action="functions/local/local.php" method="POST" id='form-local'>
+			<form action="<?php echo $url ?>functions/local/local.php" method="POST" id='form-local'>
 				<label for='id_name'>Project name</label>
 				<input type="text" id="id_name" name="project_name" />
 
@@ -35,4 +35,4 @@
 	</div>
 	<div class="clear"></div>
 	<!-- CUSTOM JS -->
-	<script src="js/script_local.js"></script>
+	<script src="<?php echo $url ?>js/script_local.js"></script>

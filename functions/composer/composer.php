@@ -1,13 +1,11 @@
 <?php 
 
 // RETURN URL = LAZY/INDEX.PHP
-$url = $_SERVER['HTTP_REFERER'];
+$url_index = $_SERVER['HTTP_REFERER'];
 
 if (isset($_POST['update'])) {
 	echo `php ../../composer selfupdate`;
-
-	// echo exec('c:/...../Lazy/composer.bat'); -> REDO FOR AUTO-INSTALLER?
-	header('Location: '.$url);
+	header('Location: '.$url_index);
 }
 
 // GENERATE COMPOSER.JSON
@@ -106,7 +104,7 @@ if (isset($_POST['btn_json'])) {
 	}
 
 	// GO BACK TO INDEX.PHP
-	header('Location: '.$url);
+	header('Location: '.$url_index);
 }
 
 
@@ -149,7 +147,7 @@ RewriteRule . index.php [L]";
 	}
 			
 // GO BACK TO INDEX.PHP
-header('Location: '.$url);
+header('Location: '.$url_index);
 
 	
 }
