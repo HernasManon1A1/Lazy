@@ -29,7 +29,11 @@
 			exec("composer.bat");
 		}
 		include_once "./functions/composer/index.php";
-       // include_once "./functions/composer/index.php";
+		/*if (isset($_GET['e'])) {
+			if ($_GET['e'] == "23") {
+				echo "Sapin";
+			} 
+		}*/
 
     }else{ // ELSE USE LOCAL LAZY
     	fclose($connected);

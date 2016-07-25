@@ -1,7 +1,7 @@
 <?php 
 
 // RETURN URL = LAZY/INDEX.PHP
-$url_index = $_SERVER['HTTP_REFERER'];
+$url = preg_replace('/([a-z]){0,}.(php|html)/', '', $url);
 
 if (isset($_POST['update'])) {
 	echo `php ../../composer selfupdate`;
@@ -16,29 +16,35 @@ if (isset($_POST['btn_json'])) {
 
 	// CREATE THE PROJECT_NAME DIRECTORY AND INDEX + DOCTYPE
 	if(isset($project_name) && !empty($project_name)) {
-		if(!is_dir("../../your-projects/".$project_name)) {
-			$project_name = htmlspecialchars(trim(urlencode($project_name)));
-			mkdir("../../your-projects/".$project_name);
-			mkdir("../../your-projects/".$project_name."/css");
-			mkdir("../../your-projects/".$project_name."/js");
+		//if (preg_match($regex, $project_name)) {
+			if(!is_dir("../../your-projects/".$project_name)) {
+				$project_name = htmlspecialchars(trim(urlencode($project_name)));
+				mkdir("../../your-projects/".$project_name);
+				mkdir("../../your-projects/".$project_name."/css");
+				mkdir("../../your-projects/".$project_name."/js");
 
-			if(file_exists("../../your-projects/".$project_name."/index.php")) {
-				$index = fopen("../../your-projects/".$project_name."/index.php", "w");
-				$doctype = "<?php require_once 'vendor/autoload.php'; ?>\n";
-				fclose($index);
-			}else {
-				$index = fopen("../../your-projects/".$project_name."/index.php", "w");
-				fclose($index);
+				if(file_exists("../../your-projects/".$project_name."/index.php")) {
+					$index = fopen("../../your-projects/".$project_name."/index.php", "w");
+					$doctype = "<?php require_once 'vendor/autoload.php'; ?>\n";
+					fclose($index);
+				}else {
+					$index = fopen("../../your-projects/".$project_name."/index.php", "w");
+					fclose($index);
+				}
+				
+				// COPY A BASIC CSS THEME
+				$src = "../../css/style.css";
+				$dst = "../../your-projects/".$project_name."/css/style.css";
+				copy($src, $dst);
+
+				$js = fopen("../../your-projects/".$project_name."/js/script.js", "w");
+				fclose($js);
 			}
-			
-			// COPY A BASIC CSS THEME
-			$src = "../../css/style.css";
-			$dst = "../../your-projects/".$project_name."/css/style.css";
-			copy($src, $dst);
+		//} else {
+			//header('Location: '.$url_index.'index.php?e=23');
+			header('Location: '.$url_index);
+		//}
 
-			$js = fopen("../../your-projects/".$project_name."/js/script.js", "w");
-			fclose($js);
-		}
 	}
 
 	$composer = fopen("../../your-projects/".$project_name."/composer.json", "w");
